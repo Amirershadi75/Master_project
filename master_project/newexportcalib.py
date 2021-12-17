@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 21 22:59:28 2021
+
+@author: amir
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Sep  8 14:24:59 2021
+
+@author: amir
+"""
+
+import pandas as pd
+
+def calibrated(time,temperature,magnetic_x,magnetic_y,magnetic_z,gyro_xcalibrated,\
+gyro_ycalibrated,gyro_zcalibrated,acc_sensor):
+    exportdatacalibrated=pd.DataFrame(time, columns=['time'])
+    exportdatacalibrated=exportdatacalibrated.assign(temperature=pd.Series(temperature).values)
+    exportdatacalibrated.rename(columns={'temperature': 'temperature [C°]'}, inplace=True)
+    exportdatacalibrated.rename(columns={'magneticfield_x_calibrated': 'magneticfield_x_calibrated [µT]'}, inplace=True)
+    exportdatacalibrated=exportdatacalibrated.assign(magneticfield_y_calibrated=pd.Series(magnetic_y).values)
+    exportdatacalibrated.rename(columns={'magneticfield_y_calibrated': 'magneticfield_y_calibrated [µT]'}, inplace=True)
+    exportdatacalibrated=exportdatacalibrated.assign(magneticfield_z_calibrated=pd.Series(magnetic_z).values)
+    exportdatacalibrated.rename(columns={'magneticfield_z_calibrated': 'magneticfield_z_calibrated [µT]'}, inplace=True)
+    exportdatacalibrated=exportdatacalibrated.assign(gyro_x_calibrated=pd.Series(gyro_xcalibrated).values)
+    exportdatacalibrated.rename(columns={'gyro_x_calibrated': 'gyro_x_calibrated [deg]'}, inplace=True)
+    exportdatacalibrated=exportdatacalibrated.assign(gyro_y_calibrated=pd.Series(gyro_ycalibrated).values)
+    exportdatacalibrated.rename(columns={'gyro_y_calibrated': 'gyro_y_calibrated [deg]'}, inplace=True)
+    exportdatacalibrated=exportdatacalibrated.assign(gyro_z_calibrated=pd.Series(gyro_zcalibrated).values)
+    exportdatacalibrated.rename(columns={'gyro_z_calibrated': 'gyro_z_calibrated [deg]'}, inplace=True)
+    exportdatacalibrated=exportdatacalibrated.assign(x_11=acc_sensor['x_11'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_12=acc_sensor['x_12'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_13=acc_sensor['x_13'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_11=acc_sensor['y_11'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_12=acc_sensor['y_12'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_13=acc_sensor['y_13'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_11=acc_sensor['z_11'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_12=acc_sensor['z_12'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_13=acc_sensor['z_13'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_21=acc_sensor['x_21'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_22=acc_sensor['x_22'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_23=acc_sensor['x_23'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_21=acc_sensor['y_21'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_22=acc_sensor['y_22'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_23=acc_sensor['y_23'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_21=acc_sensor['z_21'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_22=acc_sensor['z_22'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_23=acc_sensor['z_23'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_31=acc_sensor['x_31'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_32=acc_sensor['x_32'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_33=acc_sensor['x_33'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_31=acc_sensor['y_31'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_32=acc_sensor['y_32'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_33=acc_sensor['y_33'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_31=acc_sensor['z_31'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_32=acc_sensor['z_32'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_33=acc_sensor['z_33'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_41=acc_sensor['x_41'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_42=acc_sensor['x_42'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_43=acc_sensor['x_43'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_41=acc_sensor['y_41'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_42=acc_sensor['y_42'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_43=acc_sensor['y_43'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_41=acc_sensor['z_41'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_42=acc_sensor['z_42'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_43=acc_sensor['z_43'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_51=acc_sensor['x_51'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_52=acc_sensor['x_52'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_53=acc_sensor['x_53'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_51=acc_sensor['y_51'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_52=acc_sensor['y_52'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_53=acc_sensor['y_53'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_51=acc_sensor['z_51'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_52=acc_sensor['z_52'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_53=acc_sensor['z_53'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_61=acc_sensor['x_61'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_62=acc_sensor['x_62'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_63=acc_sensor['x_63'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_61=acc_sensor['y_61'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_62=acc_sensor['y_62'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_63=acc_sensor['y_63'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_61=acc_sensor['z_61'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_62=acc_sensor['z_62'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_63=acc_sensor['z_63'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_71=acc_sensor['x_71'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_72=acc_sensor['x_72'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_73=acc_sensor['x_73'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_71=acc_sensor['y_71'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_72=acc_sensor['y_72'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_73=acc_sensor['y_73'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_71=acc_sensor['z_71'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_72=acc_sensor['z_72'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_73=acc_sensor['z_73'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_81=acc_sensor['x_81'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_82=acc_sensor['x_82'])
+    exportdatacalibrated=exportdatacalibrated.assign(x_83=acc_sensor['x_83'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_81=acc_sensor['y_81'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_82=acc_sensor['y_82'])
+    exportdatacalibrated=exportdatacalibrated.assign(y_83=acc_sensor['y_83'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_81=acc_sensor['z_81'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_82=acc_sensor['z_82'])
+    exportdatacalibrated=exportdatacalibrated.assign(z_83=acc_sensor['z_83'])  
+    exportdatacalibrated.to_excel('calibrateddata.xlsx')

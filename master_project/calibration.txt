@@ -1,0 +1,73 @@
+Introduction:	This GUI is designed to calibrate the 16 arms logger (designed by Matthias Huther BSc 2013 & MSc 2015) Amir Ershadi 2021.
+------------------------
+To read manual please press READ MANUAL.
+------------------------
+In order to run the code you need to install python 3, we recommend to install by Anaconda and run the python script with Anaconda Powershell Prompt.
+Packages which you need are: 1: numpy 2: pandas 3: math 4: statistics 5: pylab 6: matplotlib
+7: tkinter 8: sys 9: getopt 10: struct 11: os 12: time 13: pywt 14: scipy 15: platform 16: openpyxl 17: xlsxwriter 18: navpy
+Required order of calibration types: 1. magnetometer, 2. gyro, 3. inclination of the logger, 4. radius of the arms step 1, 5. radius of the arms step 2.
+------------------------
+To collect data use the ISITECH software "BOHRLOGGER" (Toughbook).
+------------------------
+Put the logger in a considered position (instructions: see manual section on the respective sensor type).
+------------------------
+Press STARTLOG in software "BOHRLOGGER".
+------------------------
+According to the instruction of the calibration for each sensor you can hold the logger in fix position or move it during collecting data.
+------------------------
+To stop collection press STOPLOG in software "BOHRLOGGER".
+------------------------
+Change the name of your data in DATEIEN (on the left side): copy and paste the data to USB stick.
+------------------------
+Choose your calibration type and press the CHECK.
+------------------------
+You can collect all data and after that start to calibrate the logger with GUI.	
+Magnetometer calibration:
+1: To calibrate the magnetic sensor on the x and y-axis put the logger in a vertical position.
+2: Start to collect data from ISITECH software and rotate the logger 360 degree and press the stop (ISITECH "BOHRLOPGGER").
+3: Open calibration.xlsx and make sure the cells labeled magnetic_x_offset and magnetic_y_offset are 0.
+3: Load the data into GUI file.
+4: Confirm from validation window if you want to change the offsets (YES) or if you want to work with the last offsets (NO).	
+Gyroscope calibration:
+1: In order to calibrate the gyro sensor on the z-axis put the logger in a vertical position.
+2: Collect data in fixed position ( at least 3 minutes) and copy and paste the data to laptop with Python-Calibration script (Amir).
+3: Open the calibration.xlsx.
+4: Column named gyro_z offset should be 0.
+5: Load data.
+6: Confirm from validation window if you want to change the offsets (YES) or if you want to work with the last offsets (NO)	
+Inclination calibration:
+1: To calibrate inclination angle set the reference inclination sensor (External sensor) on top of the logger. The y_axis sensor should be in the same direction as the y_axis of the logger (which has been marked in the main body of the logger by YB"Y_AXIS BACK"). SEE  IMAGE 1,2.
+2: Connect the reference calibration sensor to the Toughbook by USB port. On the desktop in the Tilt_G_NSDOG2-21v0.2 folder run Tilt_G_NSDOG2-21v0.2.exe. choose COM30 port and press CONNECT and START.
+3: Use read-out angle of this external sensor to set the logger in the vertical position. Fix this position. Now the angle in both x and y-axis should be almost zero.
+4: Collect inclination data (ISITECH "BOHRLOGGER") in this vertical position. Copy and paste the data to laptop with Python-Calibration script (Amir).
+5: Open the “calibration.xlsx”.
+6: All the rows labeled theta_x,theta_y,theta_z should be 0.
+7: Load the data from the vertical position of the logger.
+8: In the validation frame you need to choose the angle which you measure during data collection, for example since we collect the data in vertical position inclination along x and y-axis should be close to 0.
+9: Press CONFIRM.
+10: Press "Confirm logger is vertical calibrate the x and y-axis".
+'WARNING: FIRST CALIBRATE THE SENSORS IN X AND Y-AXIS AFTER THAT YOU CAN CALIBRATE Z AXIS'
+11: To calibrate the z-axis, incline the logger to 2 degree to forward and fix this position. Collect data and copy and paste this data to laptop with Python-Calibration script (Amir). Do the step 11 for 2 degree backward, 2 degree right and 2 degree left.
+12: Load the data which you collect when the logger was inclined.
+13: In the validation frame choose the angle which you measure during data collection. (+ and - are important)
+WARNING: ACCORDING TO IMAGE 1 THE X AND Y AXIS OF THE EXTERNAL INCLINOMETER HAS THE OPPOSITE DIRECTION IN COMPARE TO LOGGER. (-2 DEGREE OF THE EXTERNAL INCLINOMETER SHOULD BE +2 DEGREE FOR LOGGER. SIGN OF INCLINATION IN RIGHT AND FORWARD AXIS OF THE LOGGER (ACCORDING TO THE YB'Y_AXIS BACK' SIGN) SHOULD BE +.
+14: Press CONFIRM.
+15: Press "logger that is not vertical calibrate z-axis".	
+Arm calibration STEP 1:
+1: Set the arm calibration device around the logger and screw it ( SEE IMAGE 3).
+2: Choose one of the arms, unscrew the arm (SEE IMAGE 4,5), put one of the device's hole in the position of the arm's screw and screw the arm (SEE IMAGE 6) and collect data in fixed position and copy and paste data to the laptop with Python-Calibration script (Amir). Do the same procedure for another device's hole.
+3: In “calibration.xlsx” make sure the cells labeled offset_along x and y to the considered arm are 0.
+4: Load the both data (Load the data from hole(a) after that load data from hole(b).
+5: In the validation frame choose the respective arm, in measurement holes choose the holes which you collected data. Press CONFIRM.
+6: Below the CONFIRM button there is a target value which represents difference angle between your measurement holes. write the number (+ and - is important) in the offset entry and press CHECK (There is an initial guess which the offset should be close to this value).
+7: Now you can see a message, if the number in the message and target value weren't same you need to change your guess and press DOUBLE CLICK. To get the same value in message and target value.
+8: In order to do the arm calibration step 2 you need to press SAVE OFFSET.	
+Arm calibration STEP 2:
+1: Set the arm calibration device around the logger and screw it ( SEE IMAGE 3).
+2: Choose one of the arms, unscrew the arm (SEE IMAGE 4,5), put one of the device's hole in the position of the arm's screw and screw the arm (SEE IMAGE 6) and collect data in fixed position and copy and paste data to the laptop with Python-Calibration script (Amir).
+3: In “calibration.xlsx” make sure the cells labeled offset_alongy to the considered arm is 0.
+4: Load the data (only one hole).
+5: In the validation frame choose the respective arm, in measurement holes choose the hole which you collected data. Press CONFIRM.
+6: Below the CONFIRM button there is a target value which represents the arm angle. write the number (+ and - is important) in the offset entry and press CHECK (There is an initial guess which the offset should be close to this value).
+7: Now you can see a message, if the number in the message and target value weren't same you need to change your guess and press DOUBLE CLICK. To get the same value in message and target value.
+8: Press SAVE OFFSET.
